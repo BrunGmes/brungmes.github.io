@@ -1,0 +1,262 @@
+@include media-breakpoint-down(sm) {
+    .yyy {
+        width: 1110%;
+    }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+
+    html {
+        font-size: 14px;
+    }
+
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767px) {
+
+    html {
+        font-size: 16px;
+    }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) {
+
+    html {
+        font-size: 20px;
+    }
+
+    .yyy {
+        width: 100%;
+    }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    html {
+        font-size: 24px;
+    }
+
+    .yyy {
+        width: 100%;
+    }
+
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+    html {
+        font-size: 28px;
+    }
+
+}
+
+/*CSS CLASSES*/
+
+html {
+    font-family: Helvetica;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.bodybg {
+    background-color: rgba(255,255,255,0.8);
+    background-image: url(../images/patter2.jpg);
+    background-blend-mode: color-burn;
+    height: 100%;
+}
+
+.menubg {
+    background: rgba(173, 216, 230, 0.5);
+    /*background-color: #e3f2fd;*/
+}
+
+.index {
+    text-align: center;
+}
+
+
+.clear {
+    clear: both;
+}
+
+.container-fluid {
+    background-color: lightblue;
+    background-image: url(../images/patter2.jpg);
+    background-blend-mode: color-burn;
+    height: 100%;
+}
+
+.cover {
+    /*display: table-cell;*/
+    /*vertical-align: middle;    */
+    /*text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);*/
+    height: 100%;
+}
+
+.container {
+    margin-top: 10px;
+    /*height: 100%;*/
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+
+
+/*About Me*/
+
+.perfil {
+    margin: auto;
+    height: 300px;
+}
+
+.perfil img {
+    height: 100%;
+    display: block;
+    margin: auto auto;
+    padding: 5px;
+}
+
+
+.bg-info {
+    background-color: lightblue!important;
+}
+
+
+#html {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+#css {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+#javascript {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+#php {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+#python {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.exp {
+    text-align: center;
+}
+
+.experience div {
+    margin: auto;
+}
+
+
+
+/*Portfolio*/
+
+.headerWork {
+    width: 100%;
+}
+
+.work {
+    width: 100%;
+    transition: .5s ease;
+}
+
+.work:hover {
+    opacity: 0.3;
+}
+
+.slider img{
+    width: 100%;
+}
+
+.slick-prev {
+    left: 15px;
+    z-index: 100;
+}
+
+.slick-next {
+    right: 15px;
+    z-index: 100;
+}
+
+.workinfo p {
+    padding: 0px;
+}
+
+
+/*Contacts*/
+
+
+
+/*FooterHome*/
+
+.footerHome {
+    position: absolute;
+    width: 100%;
+    padding: 30px 100px;
+    right: 0;
+    bottom: 0;
+   
+}
+
+/*Footer*/
+
+.footer {
+    position: absolute;
+    width: 100%;
+    /*bottom: 0px;*/
+    padding: 20px 0;
+    background-color: lightgray;
+    opacity: 0.6;
+    text-align: center;
+    margin-top: 5em;
+}
+
+.footer p {
+    margin: auto;
+}
+
+.footerLast {
+    bottom: 0px;
+}
+
+.spacer {
+    height: 100px;
+}
+
+
