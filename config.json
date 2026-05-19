@@ -1,0 +1,37 @@
+{
+  "name": "bruno-gomes-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio profissional de Bruno Gomes - Designer Gráfico & Desenvolvedor Web",
+  "author": "Bruno Gomes <bhsgomes@hotmail.com>",
+  "license": "MIT",
+  "keywords": ["portfolio", "design", "web-development"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrunGmes/portfolio"
+  },
+  "scripts": {
+    "dev": "open index.html",
+    "build": "echo 'Build process to be configured'"
+  },
+  "structure": {
+    "css": {
+      "index.css": "Main CSS file that imports all modules",
+      "variables.css": "Design tokens and CSS variables",
+      "base.css": "Reset and base styles",
+      "navigation.css": "Navigation component styles",
+      "buttons.css": "Button component styles",
+      "animations.css": "Animations and keyframes"
+    },
+    "js": {
+      "theme.js": "Theme manager (light/dark mode)",
+      "navigation.js": "Navigation manager",
+      "ui.js": "UI interactions manager",
+      "main.js": "Main initialization"
+    },
+    "assets": {
+      "images": "Images directory",
+      "fonts": "Local fonts directory",
+      "icons": "Custom icons directory"
+    }
+  }
+}

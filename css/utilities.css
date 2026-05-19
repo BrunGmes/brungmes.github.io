@@ -1,0 +1,221 @@
+/* ── UTILITIES ── */
+
+/* DISPLAY */
+.d-none { display: none; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+/* FLEX UTILITIES */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-xs { gap: .25rem; }
+.gap-sm { gap: .5rem; }
+.gap-md { gap: 1rem; }
+.gap-lg { gap: 1.5rem; }
+.gap-xl { gap: 2rem; }
+
+/* ALIGNMENT */
+.align-start { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-end { align-items: flex-end; }
+.align-stretch { align-items: stretch; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+/* SIZING */
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+
+.min-w-0 { min-width: 0; }
+.max-w-full { max-width: 100%; }
+
+/* OVERFLOW */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* VISIBILITY */
+.visible { visibility: visible; }
+.hidden { visibility: hidden; }
+.opacity-0 { opacity: 0; }
+.opacity-50 { opacity: 0.5; }
+.opacity-100 { opacity: 1; }
+
+/* BORDERS */
+.border { border: 1px solid var(--border); }
+.border-t { border-top: 1px solid var(--divider); }
+.border-r { border-right: 1px solid var(--divider); }
+.border-b { border-bottom: 1px solid var(--divider); }
+.border-l { border-left: 1px solid var(--divider); }
+
+.rounded-xs { border-radius: var(--r-sm); }
+.rounded-sm { border-radius: var(--r-md); }
+.rounded-md { border-radius: var(--r-lg); }
+.rounded-lg { border-radius: var(--r-xl); }
+.rounded-xl { border-radius: var(--r-2xl); }
+.rounded-full { border-radius: var(--r-full); }
+
+/* SHADOWS */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-none { box-shadow: none; }
+
+/* POSITION */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Z-INDEX */
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* CLEARFIX */
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* TRANSITIONS */
+.transition-all {
+  transition: all .3s var(--ease-out);
+}
+
+.transition-colors {
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+
+.transition-transform {
+  transition: transform .3s var(--ease-out);
+}
+
+.transition-shadow {
+  transition: box-shadow .3s var(--ease-out);
+}
+
+/* SCALE & TRANSFORM */
+.scale-100 { transform: scale(1); }
+.scale-105 { transform: scale(1.05); }
+.scale-110 { transform: scale(1.1); }
+
+.rotate-0 { transform: rotate(0deg); }
+.rotate-45 { transform: rotate(45deg); }
+.rotate-90 { transform: rotate(90deg); }
+.rotate-180 { transform: rotate(180deg); }
+
+/* ANIMATION STATES */
+.animate-none {
+  animation: none;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* CURSOR */
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+.cursor-not-allowed { cursor: not-allowed; }
+.cursor-text { cursor: text; }
+
+/* RESPONSIVE UTILITIES */
+@media (max-width: 1200px) {
+  .hide-lg { display: none; }
+}
+
+@media (max-width: 768px) {
+  .hide-md { display: none; }
+}
+
+@media (max-width: 640px) {
+  .hide-sm { display: none; }
+}
+
+@media (min-width: 1201px) {
+  .show-lg-only { display: none; }
+}
+
+@media (max-width: 1200px) {
+  .show-lg-only { display: revert; }
+}
+
+@media (max-width: 768px) {
+  .show-md-only { display: revert; }
+}
+
+@media (max-width: 640px) {
+  .show-sm-only { display: revert; }
+}
+
+/* PRINT UTILITIES */
+@media print {
+  .no-print { display: none !important; }
+  .print-hidden { display: none !important; }
+}
+
+.print-visible {
+  display: none;
+}
+
+@media print {
+  .print-visible { display: revert; }
+}

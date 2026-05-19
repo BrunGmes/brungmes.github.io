@@ -1,0 +1,198 @@
+/* ── HERO SECTION ── */
+.hero {
+  min-height: calc(100dvh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4rem, 10vw, 8rem) clamp(1rem, 4vw, 2.5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    color-mix(in oklab, var(--primary) 7%, transparent),
+    transparent
+  );
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
+.hero-eyebrow {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: up .7s .1s var(--ease) forwards;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 1rem + 6vw, 6rem);
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: up .8s .2s var(--ease) forwards;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+  transition: transform .3s var(--ease-spring);
+}
+
+.hero-name em::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: none;
+  transition: transform .3s var(--ease-spring), opacity .3s;
+}
+
+.hero:hover .hero-name em::after {
+  opacity: 1;
+  transform: scaleX(1);
+  animation: none;
+}
+
+.hero-role {
+  font-size: clamp(1.125rem, 1rem + .75vw, 1.5rem);
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: up .8s .3s var(--ease) forwards;
+  transition: color .3s;
+}
+
+.hero:hover .hero-role {
+  color: var(--text);
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: up .8s .4s var(--ease) forwards;
+}
+
+.hero-ctas .btn {
+  animation: popIn .5s .5s var(--ease-spring) backwards;
+}
+
+.hero-ctas .btn:nth-child(2) {
+  animation-delay: .6s;
+}
+
+.hero-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: up .8s .55s var(--ease) forwards;
+}
+
+.hero-socials a {
+  color: var(--faint);
+  display: flex;
+  transition: color .2s, transform .2s;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  position: relative;
+}
+
+.hero-socials a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  border-radius: var(--r-md);
+  opacity: 0;
+  transition: opacity .2s;
+  z-index: -1;
+}
+
+.hero-socials a:hover {
+  color: white;
+  transform: translateY(-3px) scale(1.1);
+}
+
+.hero-socials a:hover::before {
+  opacity: 0.15;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: up .8s .9s var(--ease) forwards;
+}
+
+.scroll-hint span {
+  display: block;
+  width: 1.5px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  margin: 0 auto;
+  animation: pulse 2s 1.2s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 1rem + 6vw, 4rem);
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-socials {
+    gap: 1rem;
+  }
+}
