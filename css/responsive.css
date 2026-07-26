@@ -1,0 +1,331 @@
+/* ──────────────────────────────────────── */
+/* RESPONSIVE & MOBILE UX IMPROVEMENTS      */
+/* Touch-friendly, mobile-first design      */
+/* ──────────────────────────────────────── */
+
+/* ── MOBILE-FIRST BASE ── */
+:root {
+  /* Larger touch targets on mobile */
+  --touch-size: 44px;
+  --touch-spacing: 16px;
+}
+
+/* ── MOBILE IMPROVEMENTS (320px - 767px) ── */
+@media (max-width: 767px) {
+  /* Increase all touch targets to 44x44 minimum */
+  button,
+  .btn,
+  a[role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: var(--touch-size);
+    min-width: var(--touch-size);
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  /* Increase tap spacing */
+  button,
+  .btn {
+    margin: 8px;
+  }
+
+  /* Mobile-friendly form inputs */
+  input,
+  textarea,
+  select {
+    min-height: var(--touch-size);
+    padding: 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: var(--r-md);
+  }
+
+  /* Mobile-friendly navigation */
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    padding: 8px 12px;
+    display: block;
+    min-height: var(--touch-size);
+    display: flex;
+    align-items: center;
+  }
+
+  /* Increase language selector buttons */
+  .lang-option,
+  .icon-btn {
+    min-width: var(--touch-size);
+    min-height: var(--touch-size);
+  }
+
+  /* Mobile-friendly spacing */
+  .grid {
+    gap: 12px;
+  }
+
+  /* Reduce padding on mobile sections */
+  section {
+    padding: 2rem 1rem !important;
+  }
+
+  /* Mobile-friendly cards */
+  [class*="card"] {
+    padding: 1rem !important;
+  }
+
+  /* Full-width mobile layouts */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero section mobile */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-inner {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .hero-name {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  /* Mobile-friendly profile card */
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .profile-card-main {
+    flex-direction: column;
+  }
+
+  .avatar-wrap {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Mobile-friendly filter buttons */
+  .filter-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Mobile-friendly tab buttons */
+  .tab-button {
+    padding: 12px;
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  /* Mobile-friendly badges */
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  /* Hide some elements on mobile */
+  .scroll-hint {
+    display: none;
+  }
+
+  /* Mobile-friendly timeline */
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item {
+    margin-left: 30px;
+  }
+
+  .timeline-marker {
+    left: -24px;
+  }
+
+  /* Stack testimonial headers */
+  .testimonial-header {
+    flex-direction: row;
+  }
+
+  /* Mobile-friendly page hero */
+  .page-hero {
+    padding: 2rem 1rem;
+  }
+
+  .page-hero-heading {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  /* Prevent horizontal scroll */
+  body,
+  html {
+    overflow-x: hidden;
+  }
+}
+
+/* ── TABLET IMPROVEMENTS (768px - 1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet-friendly spacing */
+  section {
+    padding: 3rem 2rem !important;
+  }
+
+  /* Tablet-friendly grids */
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tablet navigation */
+  .nav-links {
+    gap: 1rem;
+  }
+
+  /* Increase button sizes on tablet */
+  button,
+  .btn {
+    padding: 11px 20px;
+    min-height: 40px;
+  }
+}
+
+/* ── DESKTOP IMPROVEMENTS (1024px+) ── */
+@media (min-width: 1024px) {
+  /* Desktop hover states */
+  button:hover,
+  .btn:hover,
+  a:hover {
+    transition: all .3s var(--ease-out);
+  }
+
+  /* Desktop-friendly spacing */
+  section {
+    padding: 4rem 2rem !important;
+  }
+
+  /* Full-featured grids on desktop */
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* ── LARGE SCREENS (1280px+) ── */
+@media (min-width: 1280px) {
+  /* Large screen enhancements */
+  section {
+    padding: 5rem 3rem !important;
+  }
+
+  /* Larger container on large screens */
+  .container {
+    max-width: 1280px;
+  }
+
+  /* Enhanced spacing */
+  .grid {
+    gap: 2rem;
+  }
+}
+
+/* ── ORIENTATION HANDLING ── */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* Reduce vertical spacing on small landscape screens */
+  .hero-ctas {
+    gap: 0.5rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 1rem 0;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+}
+
+/* ── VIEWPORT HELPERS ── */
+@media (prefers-color-scheme: dark) {
+  /* Optimize for dark mode */
+  .skeleton {
+    background: linear-gradient(90deg, 
+      var(--surface) 0%, 
+      color-mix(in oklab, var(--surface) 90%, white) 50%, 
+      var(--surface) 100%);
+  }
+}
+
+/* ── SAFE AREA INSETS (Notch Support) ── */
+@media (viewport-fit: cover) {
+  .nav {
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  body {
+    padding-left: max(0, env(safe-area-inset-left));
+    padding-right: max(0, env(safe-area-inset-right));
+  }
+}
+
+/* ── HIGH DPI SCREENS ── */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina/high DPI displays */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+  /* Hide non-essential elements */
+  .nav,
+  .scroll-hint,
+  .hero-ctas,
+  .hero-socials,
+  .filter-bar,
+  .tab-button {
+    display: none !important;
+  }
+
+  /* Optimize for print */
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  /* Page breaks */
+  section {
+    page-break-inside: avoid;
+  }
+}

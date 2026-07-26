@@ -1,0 +1,76 @@
+/* ──────────────────────────────────────── */
+/* COMPONENT: Tabs                          */
+/* ──────────────────────────────────────── */
+
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-button {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: .95rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color .3s var(--ease-out);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab-button:hover {
+  color: var(--text);
+}
+
+.tab-button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.tabs-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-panel {
+  display: none;
+  padding: 1.5rem 0;
+  animation: fadeIn .3s var(--ease-out);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-panel-content {
+  width: 100%;
+}
+
+/* Responsive: Tabs */
+@media (max-width: 768px) {
+  .tabs-header {
+    gap: 0;
+  }
+
+  .tab-button {
+    padding: .875rem 1rem;
+    font-size: .9rem;
+  }
+
+  .tab-panel {
+    padding: 1.25rem 0;
+  }
+}

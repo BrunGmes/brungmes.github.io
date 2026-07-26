@@ -1,0 +1,199 @@
+/* ──────────────────────────────────────── */
+/* LAYOUT: Grids, Spacing & Utilities      */
+/* ──────────────────────────────────────── */
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid-item {
+  animation: slideInUp .5s var(--ease-out) backwards;
+}
+
+.grid-item:nth-child(1) { animation-delay: 0s; }
+.grid-item:nth-child(2) { animation-delay: 0.05s; }
+.grid-item:nth-child(3) { animation-delay: 0.1s; }
+.grid-item:nth-child(4) { animation-delay: 0.15s; }
+.grid-item:nth-child(5) { animation-delay: 0.2s; }
+.grid-item:nth-child(6) { animation-delay: 0.25s; }
+.grid-item:nth-child(7) { animation-delay: 0.3s; }
+.grid-item:nth-child(8) { animation-delay: 0.35s; }
+.grid-item:nth-child(9) { animation-delay: 0.4s; }
+.grid-item:nth-child(10) { animation-delay: 0.45s; }
+.grid-item:nth-child(11) { animation-delay: 0.5s; }
+.grid-item:nth-child(12) { animation-delay: 0.55s; }
+.grid-item:nth-child(n+13) { animation-delay: 0.55s; }
+
+/* Page Hero Section */
+.page-hero {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, 
+    color-mix(in oklab, var(--primary) 4%, var(--bg)), 
+    color-mix(in oklab, var(--primary) 2%, var(--bg)));
+  border-bottom: 1px solid var(--divider);
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--primary) 8%, transparent), transparent);
+  filter: blur(40px);
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--primary) 6%, transparent), transparent);
+  filter: blur(40px);
+  animation: float 8s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.page-hero-heading {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 1rem 0;
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+.page-hero-description {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 1.5rem 0;
+  animation: slideInRight .5s var(--ease-out);
+}
+
+.divider--thick {
+  height: 2px;
+}
+
+/* Text Utilities */
+.text-muted {
+  color: var(--muted);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Spacing Utilities */
+.mb-sm { margin-bottom: var(--r-sm); }
+.mb-md { margin-bottom: var(--r-md); }
+.mb-lg { margin-bottom: var(--r-lg); }
+.mb-xl { margin-bottom: var(--r-xl); }
+
+.mt-sm { margin-top: var(--r-sm); }
+.mt-md { margin-top: var(--r-md); }
+.mt-lg { margin-top: var(--r-lg); }
+.mt-xl { margin-top: var(--r-xl); }
+
+.p-sm { padding: var(--r-sm); }
+.p-md { padding: var(--r-md); }
+.p-lg { padding: var(--r-lg); }
+.p-xl { padding: var(--r-xl); }
+
+/* Gap Utilities */
+.gap-sm { gap: var(--r-sm); }
+.gap-md { gap: var(--r-md); }
+.gap-lg { gap: var(--r-lg); }
+.gap-xl { gap: var(--r-xl); }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    padding: 3rem 0;
+  }
+
+  .page-hero-heading {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .page-hero-description {
+    font-size: .95rem;
+  }
+}

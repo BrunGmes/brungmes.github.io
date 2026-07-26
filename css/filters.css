@@ -1,0 +1,73 @@
+/* ──────────────────────────────────────── */
+/* COMPONENT: Filter Bar                    */
+/* ──────────────────────────────────────── */
+
+.filter-bar {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+
+.filter-btn {
+  padding: .65rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  color: var(--text);
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .3s var(--ease-out);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--ease-out);
+  z-index: -1;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.filter-btn.active::before {
+  transform: scaleX(1);
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Responsive: Filter Bar */
+@media (max-width: 768px) {
+  .filter-bar {
+    gap: .5rem;
+  }
+
+  .filter-btn {
+    padding: .55rem 1rem;
+    font-size: .85rem;
+  }
+}

@@ -1,0 +1,489 @@
+/* ──────────────────────────────────────── */
+/* ACCESSIBILITY & PERFORMANCE OPTIMIZATIONS */
+/* WCAG compliance, keyboard nav, speed     */
+/* ──────────────────────────────────────── */
+
+/* ── FOCUS MANAGEMENT ── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Remove outline for mouse users (visible for keyboard only) */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── KEYBOARD NAVIGATION ── */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: var(--primary);
+  color: white;
+  padding: 1rem;
+  z-index: 9999;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* ── TAB ORDER IMPROVEMENTS ── */
+[tabindex]:not([tabindex="-1"]) {
+  position: relative;
+}
+
+/* Ensure proper tab order for buttons */
+button, a[role="button"], input[type="button"], input[type="submit"] {
+  cursor: pointer;
+  outline-offset: 2px;
+}
+
+/* ── LINK STYLING FOR ACCESSIBILITY ── */
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  transition: all 0.2s var(--ease-out);
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:visited {
+  color: color-mix(in oklab, var(--primary) 80%, #800080);
+}
+
+/* Remove underline from nav links */
+.nav a,
+[class*="nav-"] a {
+  text-decoration: none;
+}
+
+/* ── TEXT CONTRAST & READABILITY ── */
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+p, li, label {
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+/* Ensure sufficient color contrast */
+.text-muted {
+  color: var(--muted);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  :root {
+    --text: #000000;
+    --muted: #333333;
+    --border: #000000;
+  }
+
+  [data-theme="dark"] {
+    --text: #ffffff;
+    --muted: #cccccc;
+    --border: #ffffff;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  button,
+  [role="button"] {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .stagger-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  /* Static animations should be instant */
+  .hero::before,
+  .page-hero::before {
+    animation: none;
+  }
+}
+
+/* ── FORM ACCESSIBILITY ── */
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+label [aria-required="true"]::after {
+  content: " *";
+  color: #cc0000;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--r-md);
+  transition: all 0.3s var(--ease-out);
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 15%, transparent);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+/* Error states */
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: #cc0000;
+}
+
+input[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
+}
+
+/* Success states */
+input[aria-invalid="false"],
+textarea[aria-invalid="false"],
+select[aria-invalid="false"] {
+  border-color: #00aa00;
+}
+
+/* ── BUTTON ACCESSIBILITY ── */
+button,
+[role="button"],
+a[role="button"] {
+  padding: 12px 20px;
+  min-height: 44px;
+  min-width: 44px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s var(--ease-out);
+  position: relative;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ── ICON ACCESSIBILITY ── */
+i,
+[class*="icon"],
+.fa,
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ensure icons have proper spacing */
+i + span,
+.icon + span {
+  margin-left: 0.5rem;
+}
+
+/* ── HEADING HIERARCHY ── */
+h1 { font-size: clamp(2rem, 1rem + 4vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 1rem + 3vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 1rem + 2vw, 2rem); }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* Ensure proper semantic heading usage */
+main > section > h1,
+main > h1 {
+  font-size: 1.5rem;
+}
+
+main > section > h2,
+main > h2 {
+  font-size: 1.25rem;
+}
+
+/* ── IMAGE ACCESSIBILITY ── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img[alt=""] {
+  display: none;
+}
+
+picture {
+  display: block;
+}
+
+/* ── LIST ACCESSIBILITY ── */
+ul,
+ol {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ── TABLE ACCESSIBILITY ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: var(--text);
+}
+
+tr:hover {
+  background: color-mix(in oklab, var(--primary) 3%, var(--bg));
+}
+
+/* ── LANGUAGE ATTRIBUTE ── */
+[lang] {
+  font-family: inherit;
+}
+
+/* ── PRINT ACCESSIBILITY ── */
+@media print {
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--muted);
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  button,
+  a[role="button"],
+  .btn {
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}
+
+/* ── PERFORMANCE: WILL-CHANGE ── */
+.hero,
+.page-hero,
+[class*="card"]:hover,
+button:hover,
+a:hover {
+  will-change: transform;
+}
+
+/* ── PERFORMANCE: GPU ACCELERATION ── */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+/* Use translateZ(0) for GPU acceleration on animations */
+.reveal,
+.stagger-item,
+[class*="card"],
+button,
+a {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ── PERFORMANCE: LAZY LOADING ── */
+img[loading="lazy"] {
+  background: var(--surface);
+  border-radius: var(--r-md);
+}
+
+/* ── COLOR & VISION ACCESSIBILITY ── */
+@supports (color: color-mix(in srgb, red, blue)) {
+  :root {
+    /* Ensure colors are distinguishable for colorblind users */
+    --primary-text: var(--primary);
+    --secondary-text: var(--secondary);
+    --error-text: #cc0000;
+    --success-text: #00aa00;
+    --warning-text: #ff9900;
+  }
+}
+
+/* Avoid pure red/green combinations for colorblind accessibility */
+@media (prefers-color-scheme: dark) {
+  /* Ensure sufficient contrast in dark mode */
+  body {
+    background-color: #111111;
+    color: #ffffff;
+  }
+}
+
+/* ── TOUCH DEVICE ACCESSIBILITY ── */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a[role="button"],
+  [role="menuitem"] {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px 16px;
+  }
+
+  /* Add visual feedback for touch */
+  button:active,
+  a:active {
+    background-color: color-mix(in oklab, var(--primary) 15%, var(--bg));
+  }
+}
+
+/* ── SCREEN READER ONLY ── */
+.sr-only,
+[aria-label] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── ARIA LIVE REGIONS ── */
+[aria-live] {
+  position: relative;
+}
+
+[aria-busy="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ── LOADING STATES ── */
+.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    color-mix(in oklab, var(--primary) 10%, transparent),
+    transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* ── FOCUS VISIBLE REFINEMENT ── */
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible {
+    outline-style: solid;
+    outline-width: 3px;
+    outline-offset: 2px;
+    outline-color: var(--primary);
+  }
+}

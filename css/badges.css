@@ -1,0 +1,97 @@
+/* ──────────────────────────────────────── */
+/* COMPONENT: Badges & Tags                 */
+/* ──────────────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .5rem .875rem;
+  background: color-mix(in oklab, var(--primary) 12%, var(--surface));
+  border: 1px solid color-mix(in oklab, var(--primary) 25%, var(--border));
+  border-radius: var(--r-full);
+  font-size: .8125rem;
+  font-weight: 550;
+  color: var(--text);
+  transition: all .3s var(--ease-out);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.badge:hover {
+  background: color-mix(in oklab, var(--primary) 20%, var(--surface));
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px color-mix(in oklab, var(--primary) 20%, transparent);
+}
+
+.badge-sm {
+  padding: .35rem .65rem;
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.badge-lg {
+  padding: .65rem 1rem;
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.badge-secondary {
+  background: color-mix(in oklab, var(--secondary) 12%, var(--surface));
+  border-color: color-mix(in oklab, var(--secondary) 25%, var(--border));
+  color: var(--secondary);
+}
+
+.badge-secondary:hover {
+  background: color-mix(in oklab, var(--secondary) 20%, var(--surface));
+  border-color: var(--secondary);
+  box-shadow: 0 4px 12px color-mix(in oklab, var(--secondary) 20%, transparent);
+}
+
+.badge-success {
+  background: color-mix(in oklab, var(--success) 12%, var(--surface));
+  border-color: color-mix(in oklab, var(--success) 25%, var(--border));
+  color: var(--success);
+}
+
+.badge-success:hover {
+  background: color-mix(in oklab, var(--success) 20%, var(--surface));
+  border-color: var(--success);
+  box-shadow: 0 4px 12px color-mix(in oklab, var(--success) 20%, transparent);
+}
+
+/* Badge with icon */
+.badge i {
+  font-size: .85em;
+}
+
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.badge-group-title {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+/* Responsive: Badges */
+@media (max-width: 640px) {
+  .badge {
+    font-size: .75rem;
+    padding: .4rem .75rem;
+  }
+
+  .badge-lg {
+    font-size: .8125rem;
+    padding: .5rem .875rem;
+  }
+}
