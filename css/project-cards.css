@@ -141,8 +141,6 @@
 
 .project-link:hover {
   background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
 .project-link i {

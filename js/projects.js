@@ -180,14 +180,13 @@ const ProjectManager = (() => {
   };
 
   const onLangChange = () => {
+    renderGrid();
     const page = document.getElementById('page-project');
     if (page && page.classList.contains('active') && currentId) {
       const p = PROJECTS.find(x => x.id === currentId);
-      if (p) {
-        renderDetail(p);
-        UIManager.initReveal();
-      }
+      if (p) renderDetail(p);
     }
+    UIManager.initReveal();
   };
 
   const init = () => {
