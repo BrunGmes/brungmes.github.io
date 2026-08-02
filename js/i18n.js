@@ -72,11 +72,16 @@ const LanguageManager = (() => {
       'portfolio.tag': 'Trabalho',
       'portfolio.title': 'Meus <em>Projetos</em>',
       'portfolio.subtitle': 'Uma seleção de trabalhos em desenvolvimento web, design gráfico e identidade visual.',
-      'card.dev': 'Desenvolvimento',
-      'card.design': 'Design Gráfico',
-      'card.complete': 'Completo',
-      'card.mobile': 'App Mobile',
-      'card.view': 'Ver →',
+      'project.view': 'Ver projeto',
+      'project.back': 'Voltar ao portfólio',
+      'project.year': 'Ano',
+      'project.category': 'Categoria',
+      'project.stack': 'Stack',
+      'project.category.web': 'Desenvolvimento Web',
+      'project.category.design': 'Design Gráfico',
+      'project.category.app': 'App',
+      'project.links.live': 'Visitar projeto',
+      'project.links.repo': 'Código',
       'contact.tag': 'Contato',
       'contact.title': 'Vamos <em>trabalhar</em> juntos',
       'contact.subtitle': 'Estou disponível para novos projetos. Fale comigo — responderei em 24 horas.',
@@ -151,11 +156,16 @@ const LanguageManager = (() => {
       'portfolio.tag': 'Work',
       'portfolio.title': 'My <em>Projects</em>',
       'portfolio.subtitle': 'A selection of work in web development, graphic design and visual identity.',
-      'card.dev': 'Development',
-      'card.design': 'Graphic Design',
-      'card.complete': 'Completed',
-      'card.mobile': 'Mobile App',
-      'card.view': 'View →',
+      'project.view': 'View project',
+      'project.back': 'Back to portfolio',
+      'project.year': 'Year',
+      'project.category': 'Category',
+      'project.stack': 'Stack',
+      'project.category.web': 'Web Development',
+      'project.category.design': 'Graphic Design',
+      'project.category.app': 'App',
+      'project.links.live': 'View project',
+      'project.links.repo': 'Code',
       'contact.tag': 'Contact',
       'contact.title': 'Let\'s <em>work</em> together',
       'contact.subtitle': 'I am available for new projects. Reach out — I’ll reply within 24 hours.',
@@ -293,14 +303,6 @@ const LanguageManager = (() => {
     if (portTitle) setTextPreserve(portTitle, get(lang, 'portfolio.title'), true);
     setTextPreserve(document.querySelector('#page-portfolio .page-subtitle'), get(lang, 'portfolio.subtitle'));
 
-    // Card badges and view links (order-sensitive: matches visible cards)
-    const cardBadgeKeys = ['card.dev','card.design','card.complete','card.mobile'];
-    const badges = document.querySelectorAll('.grid .card .badge');
-    badges.forEach((b, i) => setTextPreserve(b, get(lang, cardBadgeKeys[i] || '')));
-
-    const viewLinks = document.querySelectorAll('.grid .card .card-footer a');
-    viewLinks.forEach((a) => setTextPreserve(a, get(lang, 'card.view')));
-
     // Contact page
     const contactTag = document.querySelector('#page-contact .page-tag');
     if (contactTag) setTextPreserve(contactTag, get(lang, 'contact.tag'));
@@ -322,6 +324,7 @@ const LanguageManager = (() => {
     if (!SUPPORTED.includes(lang)) lang = DEFAULT;
     try { localStorage.setItem(STORAGE_KEY, lang); } catch(_) {}
     apply(lang);
+    document.dispatchEvent(new CustomEvent('lang:changed', { detail: lang }));
   };
 
   const toggleLanguage = () => {
@@ -350,5 +353,5 @@ const LanguageManager = (() => {
     }));
   };
 
-  return { init, setLanguage, toggleLanguage };
+  return { init, setLanguage, toggleLanguage, get };
 })();

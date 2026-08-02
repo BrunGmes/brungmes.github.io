@@ -64,19 +64,24 @@ const UIManager = (() => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn');
+    const form = document.getElementById('contact-form');
     const fb = document.getElementById('form-feedback');
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    if (!form || !fb) return;
 
-    setTimeout(() => {
-      fb.style.color = 'var(--success)';
-      fb.textContent = 'Mensagem enviada com sucesso! Responderei em breve.';
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensagem';
-      document.getElementById('contact-form').reset();
-      setTimeout(() => { fb.textContent = ''; }, 6000);
-    }, 1500);
+    if (!FormManager.validateForm(form)) {
+      fb.style.color = 'var(--error)';
+      fb.textContent = 'Por favor, corrige os campos destacados.';
+      return;
+    }
+
+    const data = FormManager.serialize(form);
+    const subject = encodeURIComponent('Contato pelo portfólio - ' + data.name);
+    const body = encodeURIComponent(`${data.message}\n\n---\n${data.name} <${data.email}>`);
+    window.location.href = `mailto:${CONFIG.email}?subject=${subject}&body=${body}`;
+
+    fb.style.color = 'var(--success)';
+    fb.textContent = 'Abrindo o seu aplicativo de e-mail...';
+    setTimeout(() => { fb.textContent = ''; }, 6000);
   };
 
   return {

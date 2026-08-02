@@ -81,6 +81,12 @@ textarea.form-input {
   transition: color .2s;
 }
 
+.form-feedback {
+  margin-top: .75rem;
+  min-height: 1.25rem;
+  font-size: .875rem;
+}
+
 /* ── FORM LAYOUT ── */
 .form-layout {
   display: grid;

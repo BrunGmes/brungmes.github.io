@@ -146,12 +146,46 @@
   outline-offset: -2px;
 }
 
+.icon-btn.nav-toggle {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .nav {
     height: 56px;
   }
 
+  .icon-btn.nav-toggle {
+    display: inline-flex;
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--divider);
+    box-shadow: var(--shadow-md);
+    padding: .5rem 1rem;
+    gap: .25rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .25s var(--ease-out), transform .25s var(--ease-out), visibility .25s;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .nav-links a {
+    padding: .75rem 1rem;
   }
 }

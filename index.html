@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="css/index.css">
   <title>Bruno Gomes — Designer Gráfico &amp; Desenvolvedor Web</title>
@@ -21,7 +23,7 @@
 <!-- ╔══ NAV ══╗ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="#" onclick="showPage('home')">
+    <a class="nav-logo" href="#" onclick="NavigationManager.showPage('home')">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M12 2L3 7L12 12L21 7L12 2Z" fill="currentColor"/>
         <path d="M3 17L12 22L21 17" stroke-linecap="round" stroke-linejoin="round"/>
@@ -29,19 +31,22 @@
       </svg>
       BrunGmes
     </a>
-    <ul class="nav-links" role="list">
-      <li><a href="#" id="nav-home" class="active" onclick="showPage('home'); return false;">Início</a></li>
-      <li><a href="#" id="nav-about" onclick="showPage('about'); return false;">Sobre</a></li>
-      <li><a href="#" id="nav-portfolio" onclick="showPage('portfolio'); return false;">Portfólio</a></li>
-      <li><a href="#" id="nav-contact" onclick="showPage('contact'); return false;">Contato</a></li>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#" id="nav-home" class="active" onclick="NavigationManager.showPage('home'); return false;">Início</a></li>
+      <li><a href="#" id="nav-about" onclick="NavigationManager.showPage('about'); return false;">Sobre</a></li>
+      <li><a href="#" id="nav-portfolio" onclick="NavigationManager.showPage('portfolio'); return false;">Portfólio</a></li>
+      <li><a href="#" id="nav-contact" onclick="NavigationManager.showPage('contact'); return false;">Contato</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang-selector" role="group" aria-label="Selector de idioma">
         <button class="icon-btn lang-option" data-lang="pt" id="lang-pt" aria-pressed="true">PT</button>
         <button class="icon-btn lang-option" data-lang="en" id="lang-en" aria-pressed="false">EN</button>
       </div>
-      <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Mudar tema">
+      <button class="icon-btn" id="theme-btn" title="Mudar tema">
         <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
@@ -55,11 +60,11 @@
       <h1 class="hero-name">Bruno<br><em>Gomes</em></h1>
       <p class="hero-role">Designer Gráfico &amp; Desenvolvedor Web</p>
       <div class="hero-ctas">
-        <button class="btn btn-primary" onclick="showPage('portfolio')">
+        <button class="btn btn-primary" onclick="NavigationManager.showPage('portfolio')">
           Ver Meu Trabalho
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
-        <button class="btn btn-ghost" onclick="showPage('contact')">Contato</button>
+        <button class="btn btn-ghost" onclick="NavigationManager.showPage('contact')">Contato</button>
       </div>
       <div class="hero-socials">
         <a href="https://linkedin.com/in/brungmes" target="_blank" aria-label="LinkedIn" rel="noopener">
@@ -112,7 +117,7 @@
           <h2 class="cta-title">Tem um projeto em mente?</h2>
           <p class="cta-desc">Estou disponível para novos projetos. Fale comigo — responderei em 24 horas.</p>
         </div>
-        <button class="btn btn-primary" onclick="showPage('contact')">
+        <button class="btn btn-primary" onclick="NavigationManager.showPage('contact')">
           Falar Comigo
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
@@ -364,69 +369,14 @@
   </div>
   <div class="section">
     <div class="container">
-      <div class="grid grid-2">
-        <div class="card stagger-item">
-          <div class="card-header">
-            <div class="badge badge-primary">
-              <i class="fas fa-code"></i> Desenvolvimento
-            </div>
-            <h3 class="card-title">Portfolio Web</h3>
-            <p class="card-subtitle">2024</p>
-          </div>
-          <p class="card-body">Site responsivo moderno com animações CSS avançadas e design minimalista.</p>
-          <div class="card-footer">
-            <span class="text-muted text-sm">HTML, CSS, JavaScript</span>
-            <a href="#" class="text-primary" style="font-weight: 600;">Ver →</a>
-          </div>
-        </div>
-
-        <div class="card stagger-item">
-          <div class="card-header">
-            <div class="badge badge-primary">
-              <i class="fas fa-palette"></i> Design Gráfico
-            </div>
-            <h3 class="card-title">Identidade Visual</h3>
-            <p class="card-subtitle">2024</p>
-          </div>
-          <p class="card-body">Criação de logo, paleta de cores e guia de estilos para startup de tech.</p>
-          <div class="card-footer">
-            <span class="text-muted text-sm">Branding, Design</span>
-            <a href="#" class="text-primary" style="font-weight: 600;">Ver →</a>
-          </div>
-        </div>
-
-        <div class="card stagger-item">
-          <div class="card-header">
-            <div class="badge badge-success">
-              <i class="fas fa-rocket"></i> Completo
-            </div>
-            <h3 class="card-title">E-commerce Platform</h3>
-            <p class="card-subtitle">2023</p>
-          </div>
-          <p class="card-body">Plataforma de e-commerce com carrinho, pagamento e painel administrativo.</p>
-          <div class="card-footer">
-            <span class="text-muted text-sm">React, Node.js, MongoDB</span>
-            <a href="#" class="text-primary" style="font-weight: 600;">Ver →</a>
-          </div>
-        </div>
-
-        <div class="card stagger-item">
-          <div class="card-header">
-            <div class="badge badge-info">
-              <i class="fas fa-mobile-alt"></i> App Mobile
-            </div>
-            <h3 class="card-title">Aplicativo Fitness</h3>
-            <p class="card-subtitle">2023</p>
-          </div>
-          <p class="card-body">App mobile para treinos personalizados com tracking de progresso.</p>
-          <div class="card-footer">
-            <span class="text-muted text-sm">React Native, Firebase</span>
-            <a href="#" class="text-primary" style="font-weight: 600;">Ver →</a>
-          </div>
-        </div>
-      </div>
+      <div class="projects-grid" id="projects-grid"></div>
     </div>
   </div>
+</div>
+
+<!-- ╔══ PROJECT DETAIL ══╗ -->
+<div class="page" id="page-project">
+  <div id="project-content"></div>
 </div>
 
 <!-- ╔══ CONTACT ══╗ -->
@@ -440,7 +390,26 @@
   </div>
   <div class="section">
     <div class="container">
-      <p>Formulário de contato em construção...</p>
+      <form id="contact-form" class="form-layout" novalidate>
+        <div class="form-layout-2">
+          <div class="form-group">
+            <label class="form-label" for="cf-name">Nome</label>
+            <input class="form-input" id="cf-name" name="name" type="text" placeholder="O seu nome" data-validate="required" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-email">Email</label>
+            <input class="form-input" id="cf-email" name="email" type="email" placeholder="voce@exemplo.com" data-validate="required|email" autocomplete="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-message">Mensagem</label>
+          <textarea class="form-input" id="cf-message" name="message" rows="5" placeholder="Conte-me sobre o seu projeto..." data-validate="required|min:10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-btn">
+          <i class="fas fa-paper-plane"></i> Enviar Mensagem
+        </button>
+        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </div>
@@ -458,6 +427,7 @@
 <script src="js/utils.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/forms.js"></script>
+<script src="js/projects.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   LanguageManager.init();
   NavigationManager.initScroll();
   UIManager.initReveal();
+  ProjectManager.init();
 
   // Counter animation
   initCounters();
@@ -65,6 +66,23 @@ const setupEventListeners = () => {
   const themeBtn = document.getElementById('theme-btn');
   if (themeBtn) {
     themeBtn.addEventListener('click', ThemeManager.toggleTheme);
+  }
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    const closeMenu = () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.querySelector('i').className = 'fas fa-bars';
+    };
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   }
 
   // Form submission
